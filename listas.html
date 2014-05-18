@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="bs/ico/favicon.ico">
+
+    <title>filmfestdb</title>
+
+	
+	
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="bs/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="fitrify/css/style.css">
+<link rel="stylesheet" href="fitrify/css/sunburst.css">
+<link rel="stylesheet" href="fitrify/css/filtrify.css">
+<link rel="stylesheet" href="fitrify/css/jPages.css">
+<link rel="stylesheet" href="fitrify/css/animate.css">
+
+
+
+
+<script src="fitrify/js/jquery-1.7.1.min.js"></script>
+<script src="fitrify/js/highlight.pack.js"></script>
+<script src="fitrify/js/script.js"></script>
+<script src="fitrify/js/filtrify.min.js"></script>
+<script src="fitrify/js/jPages.min.js"></script>
+<script src="fitrify/js/jquery.lazyload.min.js"></script>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="bs/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="bs/css/theme.css" rel="stylesheet">
+
+	
+	
+<style type="text/css">
+
+
+ul#container > li:before {
+
+    content: 
+	"\A"attr(data-name)"\A";
+	 font-size:100%;
+    
+	
+}
+
+
+ul#container > li:after {
+
+    content: "\A Synopsis: "attr(data-sinopsis)"\A\A Director: "attr(data-director)"\A Year: "attr(data-year)"\A Genre: "attr(data-genre)"\A Actors: "attr(data-actors)"\A Festival: "attr(data-festival-year)"\A Section: "attr(data-seccion)"\A Duration: "attr(data-duration);
+    white-space: pre-wrap;
+}
+
+</style>
+
+<script type="text/javascript">
+$(function() {
+
+
+
+
+
+    var container = $("#container"),
+        pagination = $("#pagination");
+
+    function setLazyLoad () {
+        container.find("img").lazyload({
+            event : "turnPage",
+            effect : "fadeIn"
+        });
+    };
+
+    function setPagination () {
+        pagination.jPages({
+            containerID : "container",
+            perPage : 9,
+            direction : "auto",
+            animation : "fadeInUp",
+            callback : function( pages, items ){
+                items.showing.find("img").trigger("turnPage");
+                items.oncoming.find("img").trigger("turnPage");
+            }
+        });
+    };
+
+    function destroyPagination () {
+        pagination.jPages("destroy");
+    };
+
+    setLazyLoad();
+    setPagination();
+
+    $.filtrify("container", "placeHolder", {
+        block : ["data-duration","data-actors","data-sinopsis","data-seccion","data-trailer"],
+        callback : function() {
+            destroyPagination();
+            setPagination();
+        }
+    });
+
+
+
+	
+});
+
+
+</script>
+
+
+<style>
+	.progress-button button {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: 140px;
+    height: 40px;
+    border: 2px solid #428bca;
+    border-radius: 40px;
+    background: transparent;
+    color: white !important;
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+    margin-top:5px;
+}
+.navbar-nav {
+float: left;
+margin: 0;
+font-family: 'Terminal Dosis', sans-serif;
+font-size: 20px;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+line-height: 46px;
+</style>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,bold|Terminal+Dosis:500" media="screen" rel="stylesheet" type="text/css" />
+
+
+<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/cosmo/bootstrap.min.css" rel="stylesheet">
+<link href="http://bootswatch.com/assets/css/bootswatch.min.css" rel="stylesheet">
+	</head>
+
+
+
+  <body role="document">
+
+   <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">filmfestdb</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+                <li class="active"><a href="listas.html">database</a></li>
+                <li><a href="contacto.html">leakers, help us!</a></li>
+				<li><a href="graciela.html">special thanks</a></li>
+				<li ><a href="todolist.html">to-do list</a></li>
+           	<li ><a href="http://tlk.io/filmfestdb" target="_blank">Chat!</a></li>
+           
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	
+		  
+		  <!--filtrify  -->
+
+<div id="main" role="main">
+<div id="content" class="demo">
+
+<div id="placeHolder"></div>
+
+<div id="pagination"></div>
+
+<ul id="container">
+
+
+
+
+
+<!--BAFICI 2014 -->
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="pelicula de apertura" 
+data-name="The Congress" 
+data-director="Ari Folman"
+data-sinopsis="An aging, out-of-work actress accepts one last job, though the consequences of her decision affect her in ways she didn't consider."
+data-year="2013" 
+data-genre="Animation, Sci-Fi" 
+data-actors="Robin Wright, Harvey Keitel" 
+data-duration="122"
+><img src="http://upload.wikimedia.org/wikipedia/en/8/8d/The_Congress_film_poster.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/1A3ED04ED867E37B5AF39883116E2BB7B1A97074.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=362938&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=QHBl43lMJY0" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia oficial int." 
+data-name="Sarah prefers to run" 
+data-director="Chloï¿½ Robichaud"
+data-sinopsis="The film is about the pursuit of a goal and tackles the anxieties of a young athlete who lives only for the race."
+data-year="2013" 
+data-genre="Drama, Romance, Sport" 
+data-actors="Sophie Desmarais, Jean-Sï¿½bastien Courchesne" 
+data-duration="97"
+><img src="http://3.bp.blogspot.com/--R6NBL-4KQ4/UXr1uWHMOoI/AAAAAAAAbQs/thGxC5cSgn0/s1600/Sarah-prefere-la-course-poster.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/674BECC0A2912C1D6F69F3C33122583A8DD6D986.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>English/French included</i></span>
+<span><a href="https://www.youtube.com/watch?v=GGUSnOsYUwI" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia oficial int." 
+data-name="The Wait" 
+data-director="M. Blash"
+data-sinopsis="Two sisters decide to keep their deceased mother in their home after being informed that she will come back to life."
+data-year="2013" 
+data-genre="Drama, Thriller" 
+data-actors="Jena Malone, Chloï¿½ Sevigny" 
+data-duration="96"
+><img src="http://info-movies.com/posters/tt1675759.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/8C031DBC5E46BC39529E499FB5EF4D4ACF44A26A.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>English/French included</i></span>
+<span><a href="https://www.youtube.com/watch?v=Kak4nTPCe8g" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia oficial int." 
+data-name="Grand Central" 
+data-director="Rebecca Zlotowski"
+data-sinopsis="Gary, an unskilled young man, lands a job as a decontamination sub-contractor at a nuclear power plant in the lower valley of the Rhone."
+data-year="2013" 
+data-genre="Drama, Romance" 
+data-actors="Tahar Rahim, Lï¿½a Seydoux" 
+data-duration="94"
+><img src="http://pics.filmaffinity.com/Grand_Central-693161952-large.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/4B368D441171ACC4A2F32973DD201F32A56E9E53.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>None</i></span>
+<span><a href="https://www.youtube.com/watch?v=TO_JOX2vTd4" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia oficial int." 
+data-name="Un Chateau en Italie" 
+data-director="Valeria Bruni Tedeschi"
+data-sinopsis="A family is forced to sell their Italian home."
+data-year="2013" 
+data-genre="Comedy, Drama" 
+data-actors="Valeria Bruni Tedeschi" 
+data-duration="104"
+><img src="http://arunwithaview.files.wordpress.com/2014/02/un-chateau-en-italie.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/5727E9EFDBE538B2126B9D09A2FD96E9242A9CB2.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>Italian (printed)</i></span>
+<span><a href="https://www.youtube.com/watch?v=gSW14H3-7e0" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia vanguardia" 
+data-name="Gente en sitios" 
+data-director="Juan Cavestany"
+data-sinopsis="Antes, todo esto era campo."
+data-year="2013" 
+data-genre="Comedy, Drama" 
+data-actors="Ernesto Alterio, Carlos Areces" 
+data-duration="83"
+><img src="http://www.bandejadeplata.com/wp-content/uploads/2013/12/gente-en-sitios.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/DB433574D5740F47008307820C7ECCFDA10C8185.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>None</i></span>
+<span><a href="https://www.youtube.com/watch?v=RiZpCjX132w" target="_blank">watch trailer</a></span>
+</li>
+	
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia vanguardia" 
+data-name="Upstream Color" 
+data-director="Shane Carruth"
+data-sinopsis="A man and woman are drawn together, entangled in the life cycle of an ageless organism. Identity becomes an illusion as they struggle to assemble the loose fragments of wrecked lives."
+data-year="2013" 
+data-genre="Drama, Sci-Fi" 
+data-actors="Amy Seimetz, Frank Mosley" 
+data-duration="96"
+><img src="http://www.desktop4ipad.com/wp-content/uploads/2013/04/upstream_color_xxlg.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/528422E76B8D9DA2BC018142D1A4915820525136.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=332905&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=5U9KmAlrEXU" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia vanguardia" 
+data-name="La fille du 14 juillet" 
+data-director="Antonin Peretjatko"
+data-sinopsis="Since Hector encountered Truquette at the Louvre on July 14, he's had only one thing in mind: to seduce this girl who he's mad about. The best way to do so is to take her to the seaside."
+data-year="2013" 
+data-genre="Comedy" 
+data-actors="Vimala Pons, Grï¿½goire Tachnakian" 
+data-duration="88"
+><img src="http://cinemarama.files.wordpress.com/2014/04/la-fille-du-14-juillet-affiche.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/37F3CCC22F94469296C89E74AB48DCD7F457BDF9.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=372189&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=lyubq0LyFXw" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia vanguardia" 
+data-name="Wrong Cops" 
+data-director="Quentin Dupieux"
+data-sinopsis="A group of bad cops look to dispose of a body that one of them accidentally shot."
+data-year="2013" 
+data-genre="Comedy" 
+data-actors="Mark Burnham, Eric Judor" 
+data-duration="83"
+><img src="http://www.aceshowbiz.com/images/still/wrong-cops-poster01.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/212129668A551EF2DAFEB814DE34A010E1EA82B2.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>None</i></span>
+<span><a href="https://www.youtube.com/watch?v=nybO3XmAUNk" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia vanguardia" 
+data-name="Redemption (hummingbird)" 
+data-director="Steven Knight"
+data-sinopsis="Homeless and on the run from a military court martial, a damaged ex-special forces soldier navigating London's criminal underworld seizes an opportunity to assume another man's identity -- transforming into an avenging angel in the process."
+data-year="2013" 
+data-genre="Action, Crime, Drama" 
+data-actors="Mark Burnham, Eric Judor" 
+data-duration="100"
+><img src="http://www.cinemaldito.com/wp-content/uploads/2013/05/hummingbird-poster.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/4CA64BE821BD3389656A6A996C1EE64790A06C21.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>english</i></span>
+<span><a href="https://www.youtube.com/watch?v=82XwtyTU_1k" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="competencia vanguardia" 
+data-name="Big Bad Wolves" 
+data-director="Aharon Keshales, Navot Papushado"
+data-sinopsis="A series of brutal murders puts the lives of three men on a collision course: The father of the latest victim now out for revenge, a vigilante police detective operating outside the boundaries of law, and the main suspect in the killings - a religious studies teacher arrested and released due to a police blunder."
+data-year="2013" 
+data-genre="Comedy, Crime, Thriller" 
+data-actors="Lior Ashkenazi, Rotem Keinan" 
+data-duration="110"
+><img src="http://subtitrite.net/images/cover/2309224-(www.subtitrite.net).jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/C6A745A7D8E8FCAD05F2EDB329A531EFDE544D8E.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=366786&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=GsfzhiW5l8c" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="fuera de competencia" 
+data-name="Veronica Mars" 
+data-director="Rob Thomas"
+data-sinopsis="Years after walking away from her past as a teenage private eye, Veronica Mars gets pulled back to her hometown - just in time for her high school reunion - in order to help her old flame Logan Echolls, who's embroiled in a murder mystery."
+data-year="2014" 
+data-genre="Comedy, Crime, Drama" 
+data-actors="Kristen Bell, Jason Dohring" 
+data-duration="107"
+><img src="http://2.bp.blogspot.com/-vkswZu68kC0/UtZipNt0mkI/AAAAAAAAEHQ/QGXhnxhnhNc/s640/veronica_mars.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/F25B41B6714D121A99223DBBE391365842908D34.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=372879&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=wq1R93UMqlk" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="baficito" 
+data-name="Oggy Et Les Cafards"
+data-director="Oliver Jean-Marie"
+data-sinopsis="Ever since the world was born, two forces have been locked in perpetual battle. Their struggle is so Manichean, so ferocious, so Herculean that it makes the clash between good and evil look like a game of checkers! This ancestral duel is so ancient and so merciless that it can only be, Oggy against the Cockroaches!"
+data-year="2013" 
+data-genre="Animation, Comedy, Family"
+data-actors="" 
+data-duration="80"
+><img src="https://static.cotecine.fr/tb/Affiches/800x600/OGGY+ET+LES+CAFARDS.JPG"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/70D3711B3B05D4B6088053D32379E66EEE67CFF0.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="https://www.youtube.com/watch?v=grf_QfXBZVQ" target="_blank">watch trailer</a></span>
+</li>
+	
+<li 
+data-festival-year="BAFICI 2014" data-seccion="baficito" 
+data-name="Pororo, the Racing Adventure"
+data-director="Young Kyun Park"
+data-sinopsis="Curious little penguin Pororo and his friends accidentally cause an airplane to make an emergency landing in their home of Pororo Village. On the airplane are some turtles being shipped to Northpia to deliver ice sleds, or racing ice cars. Nevertheless, Pororo and his friends believe that the turtles are racers, and the turtles end up giving the gang at Pororo Village some lessons and passing on the championship spirit."
+data-year="2013" 
+data-genre="Animation"
+data-actors="Chris Jai Alex, Anthony Anderson" 
+data-duration="77"
+><img src="http://images.cinefacts.de/Pororo-The-Racing-Adventure-4013549053853.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/4E0B30F99C406CF20DC52869C0C82F07A7170D31.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="https://www.youtube.com/watch?v=NbejCcuCpk8" target="_blank">watch trailer</a></span>
+</li>
+	
+<li 
+data-festival-year="BAFICI 2014" data-seccion="baficito" 
+data-name="La tropa de trapo en el paï¿½s donde siempre brilla el sol (nutcrackers)"
+data-director="Alex Colls"
+data-sinopsis="A group of friendly animals all live together in a beautiful treehouse in the mountains."
+data-year="2010" 
+data-genre="Animation"
+data-actors="Nora Abad, Andres Bellas" 
+data-duration="77"
+><img src="http://www.labutaca.net/peliculas/wp-content/uploads/2010/09/la-tropa-de-trapo-cartel.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/2C443FD3DFA1E80DD9BDC7C2D97A71DF14973E8D.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="https://www.youtube.com/watch?v=Xm-sL4hvOSQ" target="_blank">watch trailer</a></span>
+</li>	
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="baficito" 
+data-name="UPA Animation Greatest hits"
+data-director=""
+data-sinopsis="The UPA style was markedly different from everything else being seen on movie screens, and audiences responded to the change that UPA offered from the repetition of usual cat-mouse battles. Mr Magoo would go on to be the studio's most successful cartoon character."
+data-year="1943" 
+data-genre="Animation"
+data-actors="" 
+data-duration=""
+><img src="http://blog.unl.edu/dixon/files/2012/03/Magoo.jpg"></img>
+<span>watch online: <i><br><a href="http://www.dailymotion.com/relevance/user/iToons/search/upa/1" target="_blank">@dailymotion</a>, <a href="https://www.youtube.com/results?filters=playlist&search_query=upa+animation&lclk=playlist" target="_blank"> @youtube</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="http://en.wikipedia.org/wiki/Golden_age_of_American_animation#United_Productions_of_America" target="_blank">wikipedia information</a></span>
+</li>	
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="baficito" 
+data-name="UPA Animation Jolly Frolics"
+data-director=""
+data-sinopsis="Jolly Frolics is a UPA animated cartoon series. Thirty-eight films were produced in the series, theatrically released from 1948 to 1959, pioneering the use of limited animation."
+data-year="1948" 
+data-genre="Animation"
+data-actors="" 
+data-duration=""
+><img src="http://www.dvdtalk.com/dvdsavant/images/3844a.jpg"></img>
+<span>watch online: <i><br><a href="https://www.youtube.com/watch?v=OmSbdvzbOzY&list=PL3vy70JIXn_v_N0Ow95sBztUhxJ2Ce00a" target="_blank">@youtube</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="http://en.wikipedia.org/wiki/Jolly_Frolics" target="_blank">wikipedia information</a></span>
+</li>
+	
+<li 
+data-festival-year="BAFICI 2014" data-seccion="baficito" 
+data-name="Mr Magoo arabian nights"
+data-director="Jim Backus"
+data-sinopsis="Mr. Magoo's ancestor, Abdul Aziz Magoo, is the uncle of Aladdin, and falls in love with a princess."
+data-year="1959" 
+data-genre="Animation"
+data-actors="" 
+data-duration="75"
+><img src="http://d2oz5j6ef5tbf6.cloudfront.net/movie/large/1001_Arabian_Nights_(1959).jpg"></img>
+<span>seed: <i><a href="https://www.youtube.com/watch?v=qaqS1jXjZlg" target="_blank">@youtube</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="https://www.youtube.com/watch?v=A0ppgYh_seM" target="_blank">watch by parts</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Afternoon Delight"
+data-director="Jill Soloway"
+data-sinopsis="Rachel is a quick-witted and lovable stay-at-home mom. Frustrated with the realities of preschool auctions, a lackluster sex life and career that's gone kaput, Rachel visits a strip club to spice up her marriage and meets McKenna, a stripper she adopts as her live-in nanny."
+data-year="2013" 
+data-genre="Comedy, Drama"
+data-actors="Kathryn Hahn, Juno Temple" 
+data-duration="95"
+><img src="http://concertposter.org/-2013AUG-B/afternoon-delight-neon-drop.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/FCD37EF91A7332C8E4E525B74CF87CBC90B7211E.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=368234&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=DQpXyke3VC4" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="La Confrerie Des Larmes"
+data-director="Jean-Baptiste Andrea"
+data-sinopsis="Renier is Gabriel Chevalier, an ex-cop whose personal life has taken a nosedive. He's a gambler, an alcoholic, a widower and single-parent to a rebellious teenage daughter. Unable to hold down regular work, he takes up the dubious offer of a job which involves sitting in an empty office waiting for the phone to ring."
+data-year="2013" 
+data-genre="Thriller"
+data-actors="Jï¿½rï¿½mie Renier, Audrey Fleurot" 
+data-duration="95"
+><img src="http://www.lyricis.fr/wp-content/uploads/2013/09/La%C2%A0Confr%C3%A9rie-des-Larmes-Affiche.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/3EFC6D7500AF204A71551C8A9D89B147A83F6C06.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="https://www.youtube.com/watch?v=iuN00t0594A" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Dear Mr Watterson"
+data-director="Joel Allen Schroeder"
+data-sinopsis="A documentary film about the impact of the newspaper comic strip Calvin & Hobbes, created by Bill Watterson."
+data-year="2013" 
+data-genre="Documentary"
+data-actors="Berkeley Breathed, Jef Mallett" 
+data-duration="89"
+><img src="http://d3iq55z57l3zed.cloudfront.net//movie_poster_it/dear-mr-watterson-film-poster-hd-berkeley-breathed-bill-amend-stephan-pastis-small.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/DB73D71E8F7245C5E8725726F979CF58C3E065D3.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://dl.opensubtitles.org/es/download/sub/5345103">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=copI0cM2e1Q" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Gare du Nord"
+data-director="Claire Simon"
+data-sinopsis="The movie tells the stories of Ismael, Mathilde, Joan and Sacha, four characters linked to the Gare du Nord for various reasons: Ismael, a student, conducts satisfaction surveys in order to finance his studies; Mathilde, a former professor of social sciences, transits through the station each day to reach a clinic in order to follow a medical treatment; Joan, a real estate agent, meets her clients at the station, hoping they will show up on time; finally, Sacha hopes to find his runaway daughter at the station."
+data-year="2013" 
+data-genre="Drama"
+data-actors="Nicole Garcia, Reda Kateb" 
+data-duration="119"
+><img src="http://2.bp.blogspot.com/-ihdSwUR9lrk/Ulbydl-nEHI/AAAAAAAACPw/0hrEnPWNa14/s400/Gare+du+Nord_Official+poster.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/059B514539D7C92DB709C14E0B88DF68D21BDA7E.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="https://www.youtube.com/watch?v=Qb7fc1zYFCM" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Ilo Ilo (Ba Ma Bu Zai Jia)"
+data-director="Anthony Chen"
+data-sinopsis="Singapore, late 90s. The friendship between the maid Teresa and young boy Jiale ignite the mother's jealousy, while the Asian recession hits the region."
+data-year="2013" 
+data-genre="Drama"
+data-actors="Koh Jia Ler, Angeli Bayani" 
+data-duration="99"
+><img src="http://flipesci.com/wp-content/themes/Boxoffice/images/caratulas/tt2901736.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/C654812343D7AC18D1DD555BEC878A14FA4B4CCA.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://dl.opensubtitles.org/en/download/sub/5512382">Download (english)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=ISovsVvX8Bg" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Inequality for All"
+data-director="Jacob Kornbluth"
+data-sinopsis="A documentary that follows former U.S. Labor Secretary Robert Reich as he looks to raise awareness of the country's widening economic gap."
+data-year="2013" 
+data-genre="Documentary"
+data-actors="Robert Reich, Nick Hanauer" 
+data-duration="89"
+><img src="http://static.rogerebert.com/uploads/movie/movie_poster/inequality-for-all-2013/large_yYuoJNkz1jtAriAvrD7Htx9DyO4.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/8526B75C72D56C78A5B6E31C3AEDDB6902A5700C.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.yifysubtitles.com/subtitle/inequality-for-all-spanish-yify-6525.zip">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=9REdcxfie3M" target="_blank">watch trailer</a></span>
+</li>
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Despre oameni si melci"
+data-director="Tudor Giurgiu"
+data-sinopsis="1992, Michael Jackson's Dangerous tour comes to Bucharest but in the small city of Cï¿½mpulung, Romania one of the most important factories is being closed, leaving 1000 people out of work"
+data-year="2012" 
+data-genre="Comedy"
+data-actors="Andi Vasluianu, Monica Barladeanu" 
+data-duration="93"
+><img src="http://www.inoras.ro/photolvl1_despre-oameni-si-melci_events_posters_60_29960_large.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/C5FD6C82CBD62EBE935AD20F92F9747304DE5906.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=313000&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=zc1RtkvAiLM" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Omar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+data-director="Hany Abu-Assad"
+data-sinopsis="A young Palestinian freedom fighter agrees to work as an informant after he's tricked into an admission of guilt by association in the wake of an Israeli soldier's killing."
+data-year="2013" 
+data-genre="Drama, Thriller"
+data-actors="Adam Bakri, Leem Lubany" 
+data-duration="96"
+><img src="http://www.studiosystemnews.com/wp-content/uploads/2014/02/omar-poster.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/0AEAE44C7F739C9AE905456731F0A223FF18C23C.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://dl.opensubtitles.org/es/download/sub/5585846">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=XOjJav3DuTc" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Only Lovers Left Alive"
+data-director="Jim Jarmusch"
+data-sinopsis="A depressed musician reunites with his lover, though their romance - which has already endured several centuries - is disrupted by the arrival of uncontrollable younger sister."
+data-year="2013" 
+data-genre="Drama, Horror, Romance"
+data-actors="Tilda Swinton, Tom Hiddleston" 
+data-duration="123"
+><img src="http://i.imgur.com/1yufGb0.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/6E3F08A382D6C000E358ABBA48545E62E2556664.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=371083&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=ycOKvWrwYFo" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Our Sunhi / Woori Sunhee"
+data-director="Sang-soo Hong"
+data-sinopsis="About Sunhi who just go back to her old school to meet her professor but coincidentally meet her ex-boyfriend and her senior which each of them have something with her in the past."
+data-year="2013" 
+data-genre="Comedy, Drama, Romance"
+data-actors="Jae-yeong Jeong, Yu-mi Jeong" 
+data-duration="88"
+><img src="http://2.bp.blogspot.com/-weLI6sqaYVQ/UoqnSdt2hZI/AAAAAAAAAc4/dScpzXhsBCA/s1600/Our_Sunhi.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/14B6612C053B281734C6215858042F5C9E4E0CDA.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=378172&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=GauIra6zRgw" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Red Obsession"
+data-director="David Roach, Warwick Ross"
+data-sinopsis="The great chateaux of Bordeaux struggle to accommodate the voracious appetite for their rare, expensive wines, which have become a powerful status symbol in booming China."
+data-year="2013" 
+data-genre="Documentary, History"
+data-actors="Russell Crowe, Sara Eisen" 
+data-duration="75"
+><img src="http://31.media.tumblr.com/f70be3748752162c645ee8a1b6ba0818/tumblr_mykbq4eyMo1si9l4oo1_1280.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/60612FDF017007945E07329FEA8F83CC2798DA53.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://dl.opensubtitles.org/es/download/sub/5442904">Download (english)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=fdR2TZzE14E" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Atertraffen"
+data-director="Anna Odell"
+data-sinopsis="A famous artist doesn't get an invitation to her class reunion. She then makes a film about what could have happened if she had went to the reunion and confronted her former bullies. Later she shows the filmed made up confrontation to her former classmates, and document their reactions."
+data-year="2013" 
+data-genre="Drama"
+data-actors="Sandra Andreis, Kamila Benhamza" 
+data-duration="88"
+><img src="http://yuq.me/movies/24/020/2402091.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/75A935A7C66AEB82955F3FE2B062D831453F87A3.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>english subs included</i></span>
+<span><a href="https://www.youtube.com/watch?v=tbAFG8XDS28" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Sacro GRA"
+data-director="Gianfranco Rosi"
+data-sinopsis="The ring road around Rome, the Grande Raccordo Anulare is the most extensive urban highway in Italy and the locale for Gianfranco Rosi's intriguing concept of a documentary, "Sacro GRA." Punning on the "Sacro Graal," or "Holy Grail," this follow-up to Rosi's American-set "Below Sea Level" takes a neutral look at intriguingly disparate lives near the highway's edge."
+data-year="2013" 
+data-genre="Documentary"
+data-actors="" 
+data-duration="93"
+><img src="http://www.entretantomagazine.com/wp-content/uploads/2013/09/sacro-gra-il-teaser-poster-283778.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/FB67FCA72A221CE99745FFC2CB75C054AA7DBEA1.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>no subtitles</i></span>
+<span><a href="https://www.youtube.com/watch?v=jmq5yaWtGSg" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Salvo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+data-director="Fabio Grassadonia, Antonio Piazza"
+data-sinopsis="Salvo is a body guard and hit man for a mafioso. After foiling an attack on his employer, Salvo hunts down the man who organised it and encounters the man's blind sister. She causes Salvo to question himself and his existence."
+data-year="2013" 
+data-genre="Crime, Drama, Romance"
+data-actors="Saleh Bakri, Luigi Lo Cascio" 
+data-duration="110"
+><img src="http://www.filmpro.hu/files/plagat/salvo-film-plakat.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/8C8CFA1F06A889DB7DCEDA76A55F6189B5DE9659.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>portugese sub included</i></span>
+<span><a href="https://www.youtube.com/watch?v=r_ptApanmL8" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Seduced and Abandoned"
+data-director="James Toback"
+data-sinopsis="An exploration of several interconnected subjects: The Cannes Film Festival, cinema art, money, glamor and death."
+data-year="2013" 
+data-genre="Documentary"
+data-actors="Ryan Gosling, Martin Scorsese" 
+data-duration="98"
+><img src="http://2.bp.blogspot.com/-NVnRZOMjHT0/UmsM212uGeI/AAAAAAAASRk/Tu5haTzcY8I/s1600/SeducedandAbandoned.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/2AE140FCB3EF236935500266DD4CF449BFD285AB.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="https://www.youtube.com/watch?v=GfzrA5seD3c" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Vi Ar Bast!"
+data-director="Lukas Moodysson"
+data-sinopsis="Three girls in 1980s Stockholm decide to form a punk band -- despite not having any instruments and being told by everyone that punk is dead."
+data-year="2013" 
+data-genre="Drama"
+data-actors="Mira Barkhammar, Mira Grosin" 
+data-duration="102"
+><img src="http://mainstream.dk/plakat/339.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/0739C140BAF419D3DC3CCF2D7E68E327BA1B0CCF.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://dl.opensubtitles.org/es/download/sub/5533826">Download (english)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=qM313xpjqQ0" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="Ookami Kodomo no Ame to Yuki"
+data-director="Mamoru Hosoda"
+data-sinopsis="Hana falls in love with a Wolf Man. After the Wolf Man's death, Hana decides to move to a rural town to continue raising her two wolf children Ame and Yuki."
+data-year="2012" 
+data-genre="Animation, Drama, Family"
+data-actors="Aoi Miyazaki, Takao Ohsawa" 
+data-duration="117"
+><img src="http://cdn.jkanime.net/assets/images/animes/image/ookami-kodomo-no-ame-to-yuki.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/F2F298F10FB8516BBBAD804BB6694922F4B6EE65.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://dl.opensubtitles.org/es/download/sub/5488100">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=-JoujKjQ-Zc" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="panorama" 
+data-name="O Corpo de Afonso"
+data-director="Joao Pedro Rodrigues"
+data-sinopsis="How would it look like, the body of Dom Afonso Henriques, first king of Portugal, tutelary figure, subject to successive mythifications throughout Portuguese history?"
+data-year="2012" 
+data-genre="Short"
+data-actors="" 
+data-duration="32"
+><img src="http://payload197.cargocollective.com/1/5/177295/6252238/prt_220x309_1377791393.jpg"></img>
+<span>seed: <i>none</i></span>
+<span>subtitle: <i>none</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=iJAhPOXWYt8" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="documentos de pittsburg" 
+data-name="The Act of Seeing With Ones Own Eyes"
+data-director="Stan Brakhage"
+data-sinopsis="At a morgue, forensic pathologists conduct autopsies of the corpses assigned."
+data-year="1971" 
+data-genre="Documentary, Short, Horror"
+data-actors="" 
+data-duration="32"
+><img src="http://www.culturame.it/wp-content/uploads/2011/01/tumblr_lbjjdeNZbI1qad93fo1_500.jpg"></img>
+<span>seed: <i><a href="http://vimeo.com/31369640" target="_blank">@vimeo</a></i></span>
+<span>subtitle: <i>none</a></i></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="musica" 
+data-name="Downloaded"
+data-director="Alex Winter"
+data-sinopsis="A documentary that explores the downloading revolution; the kids that created it, the bands and the businesses that were affected by it, and its impact on the world at large."
+data-year="2013" 
+data-genre="Documentary"
+data-actors="Henry Rollins, Noel Gallagher" 
+data-duration="106"
+><img src="http://horrornews.net/wp-content/uploads/2013/06/downloaded.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/848ACD970CEE443DFDEF901CDBD2B42793FFB543.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://dl.opensubtitles.org/es/download/sub/5108636">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=h7YnjPGIeKY" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="musica" 
+data-name="The Sound of Belgium"
+data-director="Jozef Deville"
+data-sinopsis="Explores the rich but untold story of Belgian electronic dance music. From the grand dance halls with Decap organs to the golden days of Popcorn; From dark and cold Electronic Body Music and New Beat to Belgian House and Techno."
+data-year="2012" 
+data-genre="Documentary, Music"
+data-actors="John Flanders" 
+data-duration="85"
+><img src="http://static.cinebel.be/img/movie/poster/full/1011177_fr_the_sound_of_belgium_1374582064105.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/F1A12BE2EA20585DE44102EBE2098E55075F4EEE.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=361191&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=SaBDLS6sYPs" target="_blank">watch trailer</a></span>
+</li>
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="musica" 
+data-name="The Punk Singer"
+data-director="Sini Anderson"
+data-sinopsis="A look at the life of activist, musician, and cultural icon Kathleen Hanna, who formed the punk band Bikini Kill and pioneered the riot grrrl movement of the 1990s."
+data-year="2013" 
+data-genre="Documentary, Music"
+data-actors="Kathleen Hanna" 
+data-duration="81"
+><img src="http://cinemarevius.files.wordpress.com/2013/12/punk_singer_poster_580.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/A28813C976C2E17509A886EEA9D110B1AD4FE68F.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>english included</i></span>
+<span><a href="https://www.youtube.com/watch?v=zMbLzaVkn2s" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="musica" 
+data-name="Mistaken for Strangers"
+data-director="Tom Berninger"
+data-sinopsis="Tom Berninger chronicles his time spent on the road as a member of the tour crew for The National, the rock & roll band fronted by his brother, Matt."
+data-year="2013" 
+data-genre="Documentary, Music,Comedy"
+data-actors="Tom Berninger, Matt Berninger" 
+data-duration="75"
+><img src="http://cdn.stereogum.com/files/2013/04/national-mistaken-for-strangers-608x912.jpeg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/F6EA367D009B171BB18B99134BD7D04D60D521EC.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://dl.opensubtitles.org/es/download/sub/5631823">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=Mb_C7-mwUZk" target="_blank">watch trailer</a></span>
+</li>
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="musica" 
+data-name="Mistaken for Strangers"
+data-director="Michel Radford"
+data-sinopsis="Documentaire sur la vie de Michel Petrucciani."
+data-year="2011" 
+data-genre="Documentary, Music"
+data-actors="Michel Petrucciani" 
+data-duration="102"
+><img src="http://www.efeeme.com/wp-content/uploads/michel-petrucciani-documental-18-08-11.jpg"></img>
+<span>seed: <i><a href="https://www.youtube.com/watch?v=YNd6H1jdVRI" target="_blank">@youtube</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="https://www.youtube.com/watch?v=w3xHaAiakEw" target="_blank">watch trailer</a></span>
+</li>
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="musica" 
+data-name="Good Ol' Freda"
+data-director="Ryan White"
+data-sinopsis="A documentary in which Freda Kelly looks back at her career as lifelong secretary for The Beatles."
+data-year="2013" 
+data-genre="Documentary, Music"
+data-actors="Freda Kelly, Paul McCartney" 
+data-duration="86"
+><img src="http://www.jkpeliculas.com/files/uploads/2422.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/FC59398B1377FE56702AA507C5BC8FEDBA537630.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=359355&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=OoAJLFk1CiI" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="musica" 
+data-name="Elektro Moskva"
+data-director="Dominik Spritzendorfe"
+data-sinopsis="Elektro Moskva is an essayistic documentary about the Soviet electronic age and its legacy. The story begins with the inventor of the world's first electronic instrument, Leon Theremin, unveiling the KGB's huge pile of fascinating devices, some of which were musical. They all came into existence as a by-product of a rampant defense industry. Nowadays, those aged and abandoned 'musical coffins', as solidly made as a Kalashnikov, are being recycled and reinterpreted by the post-Soviet generations of musicians, sound collectors and circuit benders. The story of the Soviet synthesizers."
+data-year="2013" 
+data-genre="Documentary, Music"
+data-actors="" 
+data-duration="89"
+><img src="http://cs424124.vk.me/v424124848/59a2/yoeZeOylTI0.jpg"></img>
+<span>seed: <i><a href="http://hdreactor.org/engine/download.php?id=160035" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>english included</i></span>
+<span><a href="https://www.youtube.com/watch?v=Ay3rhzJ143s" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="nocturna" 
+data-name="Escape From Tomorrow"
+data-director="Randy Moore"
+data-sinopsis="In a world of fake castles and anthropomorphic rodents, an epic battle begins when an unemployed father's sanity is challenged by a chance encounter with two underage girls on holiday."
+data-year="2013" 
+data-genre="Drama, Fantasy, Horror"
+data-actors="" 
+data-duration="90"
+><img src="http://www.elproyector.com/elproyector/wp-content/uploads/2013/10/escapefromtomorrowposter.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/292A1C2FF23E00926E51FE83A89926AE0D519901.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=351944&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=x9ShJ1NZ0F4" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="nocturna" 
+data-name="Maniac Cop"
+data-director="William Lustig"
+data-sinopsis="In New York City, a man in a cop's uniform starts killing people for no apparent reason."
+data-year="1988" 
+data-genre="Action, Crime, Horror"
+data-actors="Tom Atkins, Bruce Campbell" 
+data-duration="85"
+><img src="http://press.optimumreleasing.net/dyn/maniac%20cop_final.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/6BDF7DED7E7FA144C0A1B54937CBCA1C6662B44B.torrent" target="_blank">Download Seed</a><br>
+<a href="https://www.youtube.com/watch?v=popqktQW578" target="_blank">@youtube</a>
+</i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=345154&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=hAkb0cNsf0I" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="nocturna" 
+data-name="Shakedown"
+data-director="James Glickenhaus"
+data-sinopsis="A legal attorney and renegade cop team up to stop a corrupt cop."
+data-year="1988" 
+data-genre="Action, Crime, Drama"
+data-actors="Peter Weller, Sam Elliott" 
+data-duration="97"
+><img src="http://www.slantmagazine.com/assets/house/film/so88shakedown.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/287c73d7ef34cecdc4e8c6d040e7633325c3a93e.torrent" target="_blank">Download Seed</a><br>
+<a href="https://www.youtube.com/watch?v=9qIBjS_Ow9k" target="_blank">@youtube</a>
+</i></span>
+<span>subtitle: <i><a href="http://www.subdivx.com/bajar.php?id=345154&u=7">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=t9qfcM3m3S4" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="nocturna" 
+data-name="You and the night"
+data-director="Yann Gonzalez"
+data-sinopsis="Around midnight, a young couple and their transvestite maid prepare for an orgy. Their guests will be The Slut, The Star, The Stud and The Teen."
+data-year="2013" 
+data-genre="Drama"
+data-actors="Eric Cantona, Kate Moran" 
+data-duration="92"
+><img src="http://acidstag.com/wp-content/uploads/2013/11/M83-You-And-The-Night.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/79675F66CC7C437E04FBA3299F51FEAB970E9EB9.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>none</i></span>
+<span><a href="https://www.youtube.com/watch?v=fGUCfHMOgtI" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="nocturna" 
+data-name="Shield of straw (Wara no tate)"
+data-director="Takashi Miike"
+data-sinopsis="A team of cops must protect an accused killer with a billion-yen bounty on his head."
+data-year="2013" 
+data-genre="Thriller"
+data-actors="Nanako Matsushima" 
+data-duration="124"
+><img src="http://esmifiesta.cl/wp-content/uploads/2014/04/shield.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/5CD905999FD7AA34C9E624B6000BFD0B18215058.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i><a href="http://dl.opensubtitles.org/es/download/sub/5512034">Download (spanish)</a></i></span>
+<span><a href="https://www.youtube.com/watch?v=53bmCNv2sog" target="_blank">watch trailer</a></span>
+</li>
+
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="nocturna" 
+data-name="Why Dont You Play in Hell?"
+data-director="Shion Sono"
+data-sinopsis="A renegade film crew becomes embroiled with a yakuza clan feud."
+data-year="2013" 
+data-genre="Action, Drama"
+data-actors="Hiroki Hasegawa" 
+data-duration="126"
+><img src="http://imagizer.imageshack.us/a/img513/3844/8z1t.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/a2196a28edb08d31f7cd7bc2808b1f31053bdb2d.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>
+<a href="http://dl.opensubtitles.org/es/download/sub/5630335">Download (spanish) #1</a><br>
+<a href="http://www.podnapisi.net/es/ppodnapisi/download/i/3072745/k/c06127c32ee2a77a8f4803f9088e30de33643945">Download (spanish) #2</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=xfSUlIfoyVs" target="_blank">watch trailer</a></span>
+</li>
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Kill List&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+data-director="Ben Wheatley"
+data-sinopsis="Nearly a year after a botched job, a hitman takes a new assignment with the promise of a big payoff for three killings. What starts off as an easy task soon unravels, sending the killer into the heart of darkness."
+data-year="2011" 
+data-genre="Crime, Horror, Thriller"
+data-actors="Neil Maskell, MyAnna Buring" 
+data-duration="95"
+><img src="http://www.charlottefilmsociety.com/wp-content/uploads/2012/03/kill_list_march_2012.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/17BA9AE3AC6D6C78D6EB60B561DA9C5990097370.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>
+<a href="http://www.subdivx.com/bajar.php?id=302163&u=7">Download (spanish) #1</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=aqkqF--v1tg" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Four Lions&nbsp;&nbsp;&nbsp;&nbsp;"
+data-director="Christopher Morris"
+data-sinopsis="Four incompetent British jihadists set out to train for and commit an act of terror."
+data-year="2010" 
+data-genre="Comedy, Crime, Drama"
+data-actors="Riz Ahmed, Adeel Akhtar" 
+data-duration="97"
+><img src="http://images.moviepostershop.com/four-lions-movie-poster-2010-1010687596.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/D0B54180F9E86D69168CFBCF3B3DFC61EB6DC8A1.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>
+<a href="http://www.argenteam.net/subtitles/30440/Four.Lions.%282010%29.DVDRip.XviD.LIMITED-SAPHiRE">Download (spanish) #1</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=Ew-SrlQ9tlI" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Dead Man's Shoes"
+data-director="Shane Meadows"
+data-sinopsis="A disaffected soldier (Considine) returns to his hometown to get even with the thugs who brutalized his mentally-challenged brother (Kebbell) years ago."
+data-year="2004" 
+data-genre="Crime, Drama, Thriller"
+data-actors="Paddy Considine, Gary Stretch" 
+data-duration="90"
+><img src="http://media.warp.net/images/464px_DMS_sleeve.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/AF209D2ED1D993D3F691585B756081671F735026.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>
+<a href="http://www.subdivx.com/bajar.php?id=62953&u=1">Download (spanish) #1</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=fFi6FrAV9SE" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Bunny and the bull"
+data-director="Paul King"
+data-sinopsis="A young shut-in takes an imaginary road trip inside his apartment, based on mementos and memories of a European trek from years before."
+data-year="2009" 
+data-genre="Comedy"
+data-actors="Edward Hogg, Simon Farnaby" 
+data-duration="101"
+><img src="http://filmdaze.files.wordpress.com/2011/04/bunny-and-the-bull-dvd.jpeg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/126972965A829EDAAC5606BD4D938BCE8501B618.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>
+<a href="http://www.subdivx.com/bajar.php?id=221027&u=6">Download (spanish) #1</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=0L9VlgJitmA" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Arctic Monkeys at the Apollo"
+data-director="Richard Ayoade"
+data-sinopsis="full recital documentary of Arctic monkeys."
+data-year="2008" 
+data-genre="Documentary, Music"
+data-actors="Arctic monkeys" 
+data-duration="76"
+><img src="http://1.bp.blogspot.com/-pGxaI3g12jg/UcEpzry9sTI/AAAAAAAAAjo/JjOxrTUl1tc/s1600/arctic+monkeysAT+THE+APOLLO.jpg"></img>
+<span>seed: <i><a href="http://torrage.com/torrent/9A368CB478D9BAAD46C94D7FE3EFAE03FA478D71.torrent" target="_blank">Download Seed</a></i></span>
+<span>subtitle: <i>
+none
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=4s34pn-Vh-c" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Southcliffe"
+data-director="Sean Durkin"
+data-sinopsis="Following a raft of shootings in an English market town, the crimes are retold through the eyes of a journalist and the tragedies' victims. 4 Episodes Tv Mini-Series."
+data-year="2013" 
+data-genre="TV Mini-Series"
+data-actors="Rory Kinnear, Sean Harris" 
+data-duration="60"
+><img src="http://www.eldestiladorcultural.es/wp-content/uploads/2013/12/southcliffe.jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/A844010089FBD11E4ABF2E220AFA798CF7DC64AB.torrent" target="_blank">Download Seed Episode 1</a>
+<br>
+<a href="http://torrage.com/torrent/2F68E117870DBE3602B6879BE82301EF05613B75.torrent" target="_blank">Download Seed Episode 2</a>
+<br>
+<a href="http://torrage.com/torrent/2CD758E0306E0618502A05AC47E8B2B68626A295.torrent" target="_blank">Download Seed Episode 3</a>
+<br>
+<a href="http://torrage.com/torrent/ECD86BB574DA3E48D4BD763FF4EECA16FD94C7A0.torrent" target="_blank">Download Seed Episode 4</a>
+</i></span>
+<span>subtitle: <i>
+spanish included
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=j2bdwXQLXg4" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="The Stone Roses: Made of Stone"
+data-director="Shane Meadows"
+data-sinopsis="Shane Meadows documents the reunion of iconic British band, The Stone Roses."
+data-year="2013" 
+data-genre="Documentary, Music"
+data-actors="Ian Brown" 
+data-duration="97"
+><img src="http://www.bibdsl.co.uk/imagegallery/parafax/Largedvd/All/L_F4dvd90138.Jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/38242C6892F56EC25A73CBD6F9FF25EEDFFF5CAA.torrent" target="_blank">Download Seed</a>
+</i></span>
+<span>subtitle: <i>
+<a href="http://dl.opensubtitles.org/en/download/sub/5611162">Download (english)</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=2oMZkW0RjE4" target="_blank">watch trailer</a></span>
+</li>
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="This Is England"
+data-director="Shane Meadows"
+data-sinopsis="A story about a troubled boy growing up in England, set in 1983. He comes across a few skinheads on his way home from school, after a fight. They become his new best friends even like family. Based on experiences of director Shane Meadows."
+data-year="2006" 
+data-genre="Crime, Drama"
+data-actors="Stephen Graham, Jo Hartley" 
+data-duration="97"
+><img src="http://pedaladasabuenritmo.files.wordpress.com/2013/02/this_is_england_ver5.jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/82D2280FBCC8A90CF09A75025E769C43AC1FB441.torrent" target="_blank">Download Seed</a>
+<br>
+<a href="https://www.youtube.com/watch?v=b3vqidN-mYQ" target="_blank">@youtube</a>
+</i></span>
+<span>subtitle: <i>
+<a href="http://www.subdivx.com/bajar.php?id=82414&u=2">Download (spanish)</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=CXDNsPRTANw" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Tyrannosaur"
+data-director="Paddy Considine"
+data-sinopsis="Joseph, a man plagued by violence and a rage that is driving him to self-destruction, earns a chance of redemption that appears in the form of Hannah, a Christian charity shop worker."
+data-year="2011" 
+data-genre="Crime, Drama"
+data-actors="Peter Mullan, Olivia Colman"
+data-duration="91"
+><img src="http://www.argenteam.net/resources/images/3b9fd45d19af14c24dd9df08612b1f65.jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/35534738e6081de99116579a713c759c11350518.torrent" target="_blank">Download Seed</a>
+</i></span>
+<span>subtitle: <i>
+<a href="http://www.argenteam.net/subtitles/33414/Tyrannosaur.%282011%29.DVDRip.XviD.LIMITED-SCREAM">Download (spanish)</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=TU47-MLBF9o" target="_blank">watch trailer</a></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="A Gun for George"
+data-director="Matthew Holness"
+data-sinopsis="Terry Finch is a frustrated pulp fiction author and eternal loner looking for brutal revenge on the mean streets of East Kent."
+data-year="2011" 
+data-genre="Short, Drama"
+data-actors=""
+data-duration="17"
+><img src="http://www.liveforfilms.com/wp-content/uploads/2011/10/A-Gun-For-George.jpg"></img>
+<span>seed: <i>
+<a href="https://www.youtube.com/watch?v=Fq0xt_gbVH0" target="_blank">@youtube</a>
+</i></span>
+<span>subtitle: <i>
+none
+</i></span>
+</li>
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Dr. Easy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+data-director=" Jason Groves"
+data-sinopsis="Michael is a broken man with a gun. He is surrounded by armed police. A robot with medical training is dispatched to negotiate - but can it save him?"
+data-year="2013" 
+data-genre="Short, Drama"
+data-actors=""
+data-duration="17"
+><img src="http://www.jellyfishpictures.co.uk/wp-content/uploads/2013/03/DrEasy_PosterC-128x188.jpg"></img>
+<span>seed: <i>
+<a href="http://vimeo.com/68368877" target="_blank">@vimeo</a>
+</i></span>
+<span>subtitle: <i>
+none
+</i></span>
+</li>
+	
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="My Wrongs 8245-8249 and 117"
+data-director="Christopher Morris"
+data-sinopsis="Adapted from a monologue in his Blue Jam radio series, Chris Morris' first short film is a haunting black comedy about a man who no longer uses his name because he's decided he's ceased to deserve one, and a dog called Rothko who says he is the man's lawyer. As reality bleeds into hallucination, Rothko decides to take the man for a walk... "
+data-year="2002" 
+data-genre="Short, Comedy, Fantasy, Horror"
+data-actors="Paddy Considine, Miranda Pleasence"
+data-duration="12"
+><img src="http://media.warp.net/images/464px_WF001DVD_Inlay_A.jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/ab0433628b113e531322b2785b4be6391a6321dc.torrent" target="_blank">Download Seed</a>
+</i></span>
+<span>subtitle: <i>
+none
+</i></span>
+</li>
+	
+	
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Rubber Johnny"
+data-director="Chris Cunningham, Aphex Twin"
+data-sinopsis="The title character is a boy whose bizarre skills frighten his caregivers. Due to his ability to contort his body into unnatural positions, he is kept locked in the family basement. With nothing more than a vivid imagination and a pitiful pet dog, he attempts to keep himself entertained."
+data-year="2005" 
+data-genre="Short, Animation, Horror"
+data-actors=""
+data-duration="6"
+><img src="http://www.copertinedvd.org/copertine-cd-file/A/aphex_twin_-_rubber_johnny_-_front.jpg"></img>
+<span>seed: <i>
+<a href="https://www.youtube.com/watch?v=eRvfxWRi6qQ" target="_blank">@youtube</a>
+</i></span>
+<span>subtitle: <i>
+none
+</i></span>
+</li>
+
+
+	
+<li 
+data-festival-year="BAFICI 2014" data-seccion="warp" 
+data-name="Swimmer"
+data-director="Lynne Ramsay"
+data-sinopsis="A young man swims across the rivers and lakes of Britain to a soundtrack of assorted nationalistic music. As he passes people on the banksides including children,lovers and a tramp their thoughts and conversations are also heard. Ultimately,after walking through a wood at night,the boy returns to the water and appears to sink below the surface."
+data-year="2012" 
+data-genre="Short"
+data-actors="Tom Litten, Niall Burton"
+data-duration="18"
+><img src="http://4.bp.blogspot.com/-um3xsrzD9eg/UIlrE-Lef2I/AAAAAAAAHow/3k3zFjnKJww/s1600/tumblr_m7ptpyIh2f1qzzsdjo1_1280.png"></img>
+<span>seed: <i>
+<a href="https://www.youtube.com/watch?v=0Vkq-4r_jpo" target="_blank">@youtube</a>
+</i></span>
+<span>subtitle: <i>
+none
+</i></span>
+</li>
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="sportivo" 
+data-name="The Armstrong Lie"
+data-director="Alex Gibney"
+data-sinopsis="A documentary chronicling sports legend Lance Armstrong's improbable rise and ultimate fall from grace."
+data-year="2013" 
+data-genre="Documentary"
+data-actors="Lance Armstrong, Reed Albergotti" 
+data-duration="124"
+><img src="http://www.circlecinema.com/wp-content/uploads/2013/09/The-Armstrong_Lie_1.jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/5AF2E6E96D3DD385EA44B3A01BC0FBA2DE9C42D0.torrent" target="_blank">Download Seed</a>
+</i></span>
+<span>subtitle: <i>
+<a href="http://www.subdivx.com/bajar.php?id=368543&u=7">Download (spanish)</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=ukOJ_1b-8lQ" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="sportivo" 
+data-name="Boxing Gym"
+data-director="Frederick Wiseman"
+data-sinopsis="Explores the world of a boxing gym in Austin, Texas, dwelling on the discipline of training as people from all walks of life aspire to reach their personal best."
+data-year="2013" 
+data-genre="Documentary"
+data-actors="Richard Lord" 
+data-duration="91"
+><img src="http://realtalkies.files.wordpress.com/2010/09/screen-shot-2010-09-29-at-7-09-29-pm.png"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/4EE9334D04E66C2077E83AC559A12E4A2516A54D.torrent" target="_blank">Download Seed</a>
+</i></span>
+<span>subtitle: <i>none.</i></span>
+<span><a href="https://www.youtube.com/watch?v=MAZbB0h3A9I" target="_blank">watch trailer</a></span>
+</li>
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="sportivo" 
+data-name="Field of Dreams"
+data-director="Phil Alden Robinson"
+data-sinopsis="An Iowa corn farmer, hearing voices, interprets them as a command to build a baseball diamond in his fields; he does, and the Chicago Black Sox come."
+data-year="1989" 
+data-genre="Drama, Family, Fantasy"
+data-actors="Kevin Costner, James Earl Jones" 
+data-duration="107"
+><img src="http://upload.wikimedia.org/wikipedia/en/6/6b/Field_of_Dreams_poster.jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/24831E2E3AA21F1410FE1BB9ECF0A5F0F116459F.torrent" target="_blank">Download Seed</a>
+</i></span>
+<span>subtitle: <i>
+<a href="http://www.subdivx.com/bajar.php?id=367699&u=7">Download (spanish)</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=Ut06d4dptWo" target="_blank">watch trailer</a></span>
+</li>
+
+
+
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="sportivo" 
+data-name="Fat City"
+data-director="John Huston"
+data-sinopsis="Two men, working as professional boxers, come to blows when their careers each begin to take opposite momentum."
+data-year="1972" 
+data-genre="Drama, Sports"
+data-actors="Stacy Keach, Jeff Bridges" 
+data-duration="100"
+><img src="http://3.bp.blogspot.com/_JfmYtoWg4vU/TPJmbJ15zVI/AAAAAAAASKw/-kO-7bQGepg/s1600/5.jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/1BFB22D73BC0D6C6FE8AE032EFC94A86CF9ECECC.torrent" target="_blank">Download Seed</a>
+</i></span>
+<span>subtitle: <i>
+<a href="http://www.subdivx.com/bajar.php?id=228254&u=6">Download (spanish)</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=Hm8pTUBa8Xo" target="_blank">watch trailer</a></span>
+</li>
+
+
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="sportivo" 
+data-name="Hoop Dreams"
+data-director="Steve James"
+data-sinopsis="A film following the lives of two inner-city Chicago boys who struggle to become college basketball players on the road to going professional."
+data-year="1994" 
+data-genre="Documentary, Sport"
+data-actors="William Gates, Arthur Agee" 
+data-duration="170"
+><img src="http://inkprince-wp.upstatement.netdna-cdn.com/wp-content/uploads/2013/11/220px-Hoop_Dreams.jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/8c26b6b011d9368a3f565431ed358fd4e7b5bd7f.torrent" target="_blank">Download Seed</a>
+<a href="https://www.youtube.com/watch?v=CKhWzYlVuSI" target="_blank">@youtube w/spanish subs</a>
+</i></span>
+<span>subtitle: <i>
+<a href="http://www.subdivx.com/bajar.php?id=211795&u=6">Download (spanish)</a>
+</i></span>
+<span><a href="https://www.youtube.com/watch?v=Ph2Y-epihlk" target="_blank">watch trailer</a></span>
+</li>
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="sportivo" 
+data-name="Two Half-Times in Hell"
+data-director="Zoltán Fábri"
+data-sinopsis="On Hitlers birthday, the Germans decide to organize a soccer match between prisoners of war and Germans. They assign the task of organizing the team to a well known Olympics football player who demands for his team food and a chance to train. Although the organizer believes that soccer is sacred and does his best to train the team, he is tempted to escape along with the others, when they find an opportunity..."
+data-year="1963" 
+data-genre="Drama, War"
+data-actors="Imre Sinkovits" 
+data-duration="140"
+><img src="http://2.bp.blogspot.com/_rhZZLEhEDNg/TDAoiJp3RTI/AAAAAAAAA7Q/J2gs4b1r98M/s1600/94_Ket_felido_a_pokolban_borito.jpg"></img>
+<span>seed: <i>
+<a href="http://torrage.com/torrent/3D2871CBA4F474B9A4529E5C1B14F41F63BAD562.torrent" target="_blank">Download Seed</a>
+<a href="https://www.youtube.com/watch?v=Slw09u16G8o" target="_blank">@youtube</a>
+</i></span>
+<span>subtitle: <i>
+<a href="http://dl.opensubtitles.org/es/download/sub/3393177">Download (spanish)</a>
+</i></span>
+<span>none</span>
+</li>
+
+
+
+
+
+<li 
+data-festival-year="BAFICI 2014" data-seccion="sportivo" 
+data-name="Paula contra la mitad mas uno"
+data-director="Néstor Paternostro"
+data-sinopsis="Paula is a girl in command of a band of kidnappers, whose purpose is to hijack the whole Boca Juniors soccer team, the most popular club in Argentina."
+data-year="1963" 
+data-genre="Drama"
+data-actors="Dimma, Juan Carlos Gené" 
+data-duration="83"
+><img src="http://pics.filmaffinity.com/Paula_contra_la_mitad_mas_uno-232826154-large.jpg"></img>
+<span>seed: <i>
+<a href="https://www.youtube.com/watch?v=MyQkQBcQglE" target="_blank">@youtube</a>
+</i></span>
+<span>subtitle: <i>
+none
+</i></span>
+<span>none</span>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- END BAFICI 2014 -->
+	
+</ul>
+
+</div>
+
+
+</div>
+
+		  
+		  <!-- end -->
+		  
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <script src="bs/js/bootstrap.min.js"></script>
+    <script src="bs/js/docs.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50125772-1', 'vlasvlasvlas.github.io');
+  ga('send', 'pageview');
+
+</script>
+	</body>
+</html>
